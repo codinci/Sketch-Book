@@ -24,9 +24,15 @@ function setupToolBox() {
     //select the paint style tools in the Styles category
     const paintStyles = select('section.toolbox div.styles-tools');
     setupBrushSelector(paintStyles);
+
+    //set up canvas tools in the Canvas category
     const canvasTools = select('section.toolbox div.canvas-tools');
     setupSaveButton(canvasTools);
     setupResetButton(canvasTools);
+
+    //set up background style tools in the Background category
+    const backgroundStyles = select('section.toolbox div.background-tools');
+    setupBgColorPicker(backgroundStyles);
 }
 
 function makeLabel(tag, parentTag, text) {
@@ -91,4 +97,18 @@ function resetCanvas() {
 
 function setupResetButton(parentTag) {
     setupButton('Reset', parentTag, resetCanvas);
+}
+
+function setupColorPicker(initialColor, parentTag, text, onChange) {
+    const colorPicker = createColorPicker(initialColor);
+    makeLabel(colorPicker, parentTag, text);
+    colorPicker.changed(onChange);
+    return colorPicker;
+}
+
+function setupBgColorPicker(parentTag) {
+    const bgColorPicker = setupColorPicker(bgColor, parentTag, 'Background color', function() {
+        bgColor =bgColorPicker.color();
+        resetCanvas();
+    });
 }
