@@ -1,13 +1,3 @@
-function setup() {
-    createCanvas(windowWidth, windowHeight)
-    background('#fbf8f3')
-}
-
-function draw() {
-    if (mouseIsPressed) {
-        sprayPaint();
-    }
-}
 
 function pen() {
     stroke(0, 0, 0, 255);
