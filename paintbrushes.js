@@ -1,4 +1,3 @@
-
 function pen() {
     stroke(0, 0, 0, 255);
     strokeWeight(2);
