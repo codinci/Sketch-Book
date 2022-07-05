@@ -26,11 +26,17 @@ function setupToolBox() {
     setupBrushSelector(paintStyles);
 }
 
+function makeLabel(tag, parentTag, text) {
+    const label = createElement('label', text);
+    label.parent(parentTag);
+    tag.parent(label);
+}
+
 function setupBrushSelector(parentTag) {
     //create the brush selector as a <select> tag
     brushSelector = createSelect();
-    // put the brush selector dropdown menu inside of the Styles container
-    brushSelector.parent(parentTag);
+    //make a label for the menu
+    makeLabel(brushSelector, parentTag, 'Paintbrush Style');
 
     //make an array of all paintbrush names
     const brushes = [
