@@ -24,6 +24,9 @@ function setupToolBox() {
     //select the paint style tools in the Styles category
     const paintStyles = select('section.toolbox div.styles-tools');
     setupBrushSelector(paintStyles);
+    const canvasTools = select('section.toolbox div.canvas-tools');
+    setupSaveButton(canvasTools);
+    setupResetButton(canvasTools);
 }
 
 function makeLabel(tag, parentTag, text) {
@@ -45,7 +48,7 @@ function setupBrushSelector(parentTag) {
         'beads',
         'rainbowBeads',
         'wiggle',
-        'toothpick',
+        'toothPick',
         'fountainPen',
         'splatter',
         'sprayPaint'
@@ -65,3 +68,27 @@ function setupBrushSelector(parentTag) {
     });
 }
 
+//button helper function
+function setupButton(text, parentTag, onClick) {
+    const button = createButton(text);
+    button.parent(parentTag);
+    button.mousePressed(onClick);
+    return button;
+}
+
+function saveFile() {
+    saveCanvas('painting', 'png');
+}
+
+function setupSaveButton(parentTag) {
+    setupButton('Save', parentTag, saveFile);
+}
+
+function resetCanvas() {
+    resizeCanvas(windowWidth - toolboxWidth, windowHeight);
+    background(bgColor);
+}
+
+function setupResetButton(parentTag) {
+    setupButton('Reset', parentTag, resetCanvas);
+}
