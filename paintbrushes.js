@@ -1,5 +1,4 @@
 function pen() {
-    stroke(0, 0, 0, 255);
     strokeWeight(2);
 
     //draw a line from current mouse point to previous mouse point
@@ -7,7 +6,6 @@ function pen() {
 }
 
 function marker() {
-    fill(255, 200, 103, 40);
     noStroke();
 
     //draw a circle at current mouse position of radius 30 pixels
@@ -15,7 +13,6 @@ function marker() {
 }
 
 function beads() {
-    fill(185, 83,213, 180);
     noStroke();
 
     //find the distance between the current and previous mouse points
@@ -48,7 +45,6 @@ function rainbowBeads() {
 
 function wiggle() {
     //set the color and brush style
-    stroke(255, 120, 0, 255);
     strokeWeight(2);
     noFill();
 
@@ -69,7 +65,6 @@ function wiggle() {
 }
 
 function toothPick() {
-    fill(60, 180, 0, 150);
     noStroke();
 
     //move the origin(0,0) to the current mouse point
@@ -91,7 +86,6 @@ function toothPick() {
 
 function fountainPen() {
     //set the color and brush style
-    stroke(0, 0, 0, 255);
     strokeWeight(1);
     const width = 3;
 
@@ -112,7 +106,6 @@ function fountainPen() {
 
 function splatter() {
     //set the color and the brush style
-    stroke(frameCount % 255, 180, 255, 160);
     strokeWeight(6);
 
     //set the number of times we lerp in for the loop
@@ -131,7 +124,6 @@ function splatter() {
 }
 
 function hatching() {
-    stroke(15, 15, 255, 220);
     strokeWeight(2);
 
     //calculate the speed of the mouse
@@ -158,7 +150,6 @@ function hatching() {
 }
 
 function sprayPaint() {
-    stroke(0, 0, 0, 255);
     strokeWeight(1);
 
     //set minimum radius and spray density of spray paint brush
