@@ -175,3 +175,14 @@ function setupBrushSizeSlider(parentTag) {
         brushSize = brushSizeSlider.value();
     });
 }
+
+//keyboard functionality
+function keyPressed () {
+    if(keyCode === BACKSPACE) {
+        resetCanvas();
+    } else if(key === 's') {
+        saveFile();
+    } else if(key === 'r') {
+        ifRainbowColor = !ifRainbowColor;
+    }
+}
