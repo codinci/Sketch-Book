@@ -5,6 +5,8 @@ let brushSelector = null;
 let bgColor = '#fbf8f3';
 let paintColor = '#000000';
 let ifRainbowColor = false;
+let opacity = 220;
+let brushSize = 1;
 
 function setup() {
     setupToolBox();
@@ -36,7 +38,7 @@ function setPaintColor() {
     } else {
         newColor = paintColor;
     }
-
+    newColor.setAlpha(opacity);
     //set the stroke and fill color
     stroke(newColor);
     fill(newColor);
@@ -49,6 +51,8 @@ function setupToolBox() {
     setupBrushSelector(paintStyles);
     setupPaintColorPicker(paintStyles);
     setupRainbowColorButton(paintStyles);
+    setupOpacitySlider(paintStyles);
+    setupBrushSizeSlider(paintStyles);
 
     //set up canvas tools in the Canvas category
     const canvasTools = select('section.toolbox div.canvas-tools');
@@ -150,4 +154,24 @@ function setupRainbowColorButton(parentTag) {
     setupButton('Rainbow color', parentTag, function() {
         ifRainbowColor = !ifRainbowColor;
     })
+}
+
+//helper function that sets up a slider
+function setupSlider(min, max, initialValue, step, text, parentTag, onInput) {
+    const slider = createSlider(min, max, initialValue, step);
+    makeLabel(slider, parentTag, text);
+    slider.input(onInput);
+    return slider;
+}
+
+function setupOpacitySlider(parentTag) {
+    const opacitySlider = setupSlider(0, 255, opacity, 1, 'Opacity', parentTag, function () {
+        opacity = opacitySlider.value();
+    });
+}
+
+function setupBrushSizeSlider(parentTag) {
+    const brushSizeSlider = setupSlider(1, 16, brushSize, 0.1, 'Brush Size', parentTag, function () {
+        brushSize = brushSizeSlider.value();
+    });
 }
