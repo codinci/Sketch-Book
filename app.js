@@ -16,17 +16,6 @@ function setup() {
     background(bgColor);
 }
 
-function draw() {
-    //check if mouse button is pressed and mouse is hovering over the canvas
-    if(mouseIsPressed && mouseX <= windowWidth - toolboxWidth) {
-        //set the paint color
-        setPaintColor();
-
-        //draw on the canvas with the selected painting tool function
-        window[selectedTool]();
-    }
-}
-
 function setPaintColor() {
     //set the color of the stroke and fill
     let newColor;
@@ -44,7 +33,18 @@ function setPaintColor() {
     fill(newColor);
 }
 
+function draw() {
+    //check if mouse button is pressed and mouse is hovering over the canvas
+    if(mouseIsPressed && mouseX <= windowWidth - toolboxWidth) {
+        //set the paint color
+        setPaintColor();
 
+        //draw on the canvas with the selected painting tool function
+        window[selectedTool]();
+    }
+}
+
+//functionality for adding in toolbox items
 function setupToolBox() {
     //select the paint style tools in the Styles category
     const paintStyles = select('section.toolbox div.styles-tools');
@@ -64,6 +64,7 @@ function setupToolBox() {
     setupBgColorPicker(backgroundStyles);
 }
 
+//functionality for making labels of individual tool items
 function makeLabel(tag, parentTag, text) {
     const label = createElement('label', text);
     label.parent(parentTag);
@@ -135,6 +136,7 @@ function setupColorPicker(initialColor, parentTag, text, onChange) {
     return colorPicker;
 }
 
+//setup background color picker
 function setupBgColorPicker(parentTag) {
     const bgColorPicker = setupColorPicker(bgColor, parentTag, 'Background color', function() {
         bgColor =bgColorPicker.color();
@@ -150,6 +152,7 @@ function setupPaintColorPicker(parentTag) {
     paintColor = paintColorPicker.color();
 }
 
+//setup rainbow color as fill fr the paintbrush selected
 function setupRainbowColorButton(parentTag) {
     setupButton('Rainbow color', parentTag, function() {
         ifRainbowColor = !ifRainbowColor;
